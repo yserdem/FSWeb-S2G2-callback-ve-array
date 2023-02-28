@@ -39,7 +39,7 @@ console.log(winner(year2014Final))
 function Finaller(dataArray) {
 	return dataArray.filter((filterFinals) => filterFinals.Stage === "Final");
 }
-console.log(Finaller(fifaData))
+
 
 /*  Görev 3: 
 	Bir higher-order fonksiyonu olan Yillar isimli fonksiyona aşağıdakileri uygulayın: 
@@ -111,12 +111,13 @@ function YillaraGoreKazananlar(dataArray, funcFinals, funcYears, funcWinners) {
 	
 */
 
-function OrtalamaGolSayisi(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
-	
+function OrtalamaGolSayisi(funcFinals) {
+	let totalGoalsHome = funcFinals.reduce((total, homeGoals) => {return total + homeGoals["Home Team Goals"]}, 0);
+	let totalGoalsAway = funcFinals.reduce((total, awayGoals) => {return total + awayGoals["Away Team Goals"]}, 0);
+	let averageGoals = ((totalGoalsHome + totalGoalsAway) / funcFinals.length).toFixed(2);
+	return averageGoals;
 }
-
+console.log(OrtalamaGolSayisi(Finaller(fifaData)))
 
 
 /// EKSTRA ÇALIŞMALAR ///
